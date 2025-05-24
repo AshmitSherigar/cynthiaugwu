@@ -62,20 +62,36 @@ function pageOne() {
 
 
 document.querySelectorAll(".elem").forEach(function (elem) {
-    console.log(elem);
-    
+    let rotate = 0;
+    let diffRot = 0;
+
     elem.addEventListener("mousemove", function (dets) {
-        // console.log(dets);
-        gsap.to(elem.querySelector("img"),{
-            x:dets.clientX,  
-            y:dets.clientY,
-            opacity:1
-        })
+        // Get position relative to the element
+        const rect = elem.getBoundingClientRect();
+        
+        const relY = dets.clientY - rect.top - 150;
 
+        diffRot = dets.clientX - rotate;
+        rotate = dets.clientX;
 
+        let finalRot = gsap.utils.clamp(-30, 30, diffRot * 1.1);
 
-    })
+        gsap.to(elem.querySelector("img"), {
+            rotate: finalRot,
+            opacity: 1,
+            top: relY,
+            left: dets.clientX - 150, // assuming image width ~300px
+            ease: "power3.out"
+        });
+    });
 
-})
+    elem.addEventListener("mouseleave", function () {
+        gsap.to(elem.querySelector("img"), {
+            opacity: 0,
+            ease: "power3.out"
+        });
+    });
+});
+
 circleFollowerWithSkew();
 pageOne();

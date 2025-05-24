@@ -50,7 +50,7 @@ body {
 
 .heading {
     margin-top: 60px;
-    opacity: 0.6 ;
+    opacity: 0.6;
 }
 
 .heading h1 {
@@ -66,7 +66,7 @@ body {
     width: fit-content;
     margin-left: 175px;
     display: flex;
-    
+
     align-items: end;
     flex-direction: column;
 }
@@ -197,7 +197,11 @@ body {
     height: 150%;
     width: 345px;
     /* display: none; */
-    opacity: 0  ;
+    opacity: 0;
+
+
+    pointer-events: none;
+    transition: opacity 0.1s ease;
 
 }
 
@@ -318,5 +322,5 @@ body {
     background-color: #fff;
     position: absolute;
     z-index: 999;
-    transition: translate cubic-bezier(0.19, 1, 0.22, 2) 1s , scale cubic-bezier(0.19, 1, 0.22, 1) 1s;
+    transition: translate cubic-bezier(0.19, 1, 0.22, 2) 1s, scale cubic-bezier(0.19, 1, 0.22, 1) 1s;
 }
